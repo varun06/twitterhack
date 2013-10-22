@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Popular Web Tech</title>
+  <link href="/stylesheets/reset.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="components/socket.io-client/dist/socket.io.min.js"></script>
+  <script src="/javascripts/script.js"></script>
+  <script src="/javascripts/underscore.js"></script>
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body id="main">
+  <header>
+    <div id="logo"><a href="/">Popular Web Programming Languages</a></div>
+  </header>
+
+  <div id="wrapper">
+    <div id="stats_container">
+
+      <div class="stats" id="total" data-total="<%= data.total %>">
+        Total tweets: <%= data.total %>
+      </div>
+
+      <!--<div class="stats" id="average_positive">-->
+        <!--Positivity Rating: Calculating-->
+      <!--</div>-->
+
+    </div>
+
+    <div id="last_update">
+      Last Updated: Never
+    </div>
+
+    <ul>
+      <% for (var index in data.symbols) {%>
+        <li>
+          <div data-count="<%= data.symbols[index] %>" data-keyword="<%= index %>" class="circle"></div>
+          <p class="keyword" ><%= index %></p>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+
+
+</body>
+</html>
