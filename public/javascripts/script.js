@@ -1,13 +1,14 @@
 $(function() {
     var socket = io.connect(window.location.hostname);
+
     var keywords = {'#javascript': { color: '#49c59f' },
         '#html': { color: '#ec000e' },
         '#css': { color: '#f36a06' },
         '#node': { color: '#ea007f' },
-//            '#python': { color: '#39be48' },
-//            '#ruby': { color: '#857158'},
-        '#php': { color: '#4b5a63' }
-//            '#perl': { color: '#f57b43'}
+        '#python': { color: '#39be48' },
+        '#ruby': { color: '#857158'},
+        '#php': { color: '#4b5a63' },
+        '#perl': { color: '#f57b43'}
     };
 
     _.each($('.circle'), function (circle) {
@@ -28,6 +29,22 @@ $(function() {
         $(this).find('p').text(keyword);
     });
 
+    // this section is going to handle the real time tweets
+    socket.on('tweet', function(tweet){
+        console.log(tweet);
+
+        $('li').on('mouseenter', function () {
+//            var count = $(this).find('.circle').data('count');
+            $('.tweet p').text(tweet);
+        });
+        $('li').on('mouseleave', function () {
+            var keyword = $(this).find('.circle').data('keyword');
+            $(this).find('p').text(keyword);
+        });
+
+    });
+
+    //This section is going to handle the hastags in tweet and display of number of tweets
     socket.on('data', function(data) {
         var total = data.total;
         for (var key in data.symbols) {

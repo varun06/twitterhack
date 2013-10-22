@@ -17,7 +17,7 @@ var server = http.createServer(app);
 
 
 // Twitter symbols array
-var watchSymbols = ['#javascript', '#html', '#css', '#node', '#php'];
+var watchSymbols = ['#javascript', '#html', '#css', '#node', '#python', '#ruby', '#php', '#perl'];
 
 //This structure will keep the total number of tweets received and a map of all the symbols and how many tweets received of that symbol
 var watchList = {
@@ -76,6 +76,8 @@ var t = new twitter({
     access_token_secret: 'wfgUZtreSwJXaR61ekw3LMP8PZg0QFDYqsV6nuhl0'     // <--- FILL ME IN
 });
 
+
+
 // //Tell the twitter API to filter on the watchSymbols 
 t.stream('statuses/filter', { track: watchSymbols }, function(stream) {
 
@@ -83,8 +85,8 @@ t.stream('statuses/filter', { track: watchSymbols }, function(stream) {
     stream.on('data', function(tweet) {
 
         //This variable is used to indicate whether a symbol was actually mentioned.
-        //Since twitter doesnt why the tweet was forwarded we have to search through the text
-        //and determine which symbol it was ment for. Sometimes we can't tell, in which case we don't
+        //Since twitter doesn't know why the tweet was forwarded we have to search through the text
+        //and determine which symbol it was meant for. Sometimes we can't tell, in which case we don't
         //want to increment the total counter...
         var claimed = false;
 
@@ -93,6 +95,9 @@ t.stream('statuses/filter', { track: watchSymbols }, function(stream) {
 
             //We're gunna do some indexOf comparisons and we want it to be case agnostic.
             var text = tweet.text.toLowerCase();
+
+            // this is emitting tweets to my view
+            sockets.sockets.emit('tweet', text);
 
             //Go through every symbol and see if it was mentioned. If so, increment its counter and
             //set the 'claimed' variable to true to indicate something was mentioned so we can increment
@@ -111,6 +116,9 @@ t.stream('statuses/filter', { track: watchSymbols }, function(stream) {
 
                 //Send to all the clients
                 sockets.sockets.emit('data', watchList);
+
+
+
             }
         }
     });
