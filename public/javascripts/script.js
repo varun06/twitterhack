@@ -44,6 +44,7 @@ $(function() {
         $('#total').text('Total Tweets: ' + total);
         $('#last_update').text('Last Update: ' + new Date().toTimeString());
     });
+
     function flashCircle(circle) {
         circle.removeClass('glow');
         circle.addClass('glow');
