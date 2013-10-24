@@ -7,82 +7,39 @@ body {
 }
 
 header {
-    padding: 30px 20px 20px;
+    padding: 2em 1.2em 1.2em;
     background-color: white;
     border-bottom: 1px solid #008aff;
 }
 
 #logo a {
-    line-height: 36px;
-    font-size: 36px;
+    line-height: 2.2em;
+    font-size: 2.2em;
     text-decoration: none;
     color: #008aff;
     text-transform: uppercase;
 }
 
 #wrapper {
-    padding-bottom: 33px;
+    padding-bottom: 2em;
 }
 
 #stats_container {
-    padding: 20px;
+    padding: 1.2em;
     background-color: white;
 }
 
 .stats {
     display: inline-block;
-    font-size: 18px;
+    font-size: 1.1em;
     text-transform: uppercase;
-    margin: 0 30px;
+    margin: 0 2em;
 }
 
 #last_update {
     text-transform: uppercase;
     color: #717175;
-    padding: 20px;
-}
-
-#info_container {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    text-align: left;
-    padding: 10px 20px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    z-index: 50;
-}
-
-#info {
-    display: none;
-    font-size: 13px;
-    color: #555;
-    line-height: 26px;
-    margin-bottom: 10px;
-}
-
-#tab {
-    display: block;
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 20px;
-    color: #008aff;
-    cursor: pointer;
-}
-
-#info_container:hover {
-    color: #555;
-    border-radius: 0 5px 0 0;
-    background-color: rgba(255,255,255,0.93);
-
-}
-
-#info_container:hover > #info {
-    display: block;
-}
-#info_container:hover > #tab {
-    display: none;
+    padding: 1.2em;
 }
 
 ul {
@@ -92,9 +49,9 @@ ul {
 li {
     position: relative;
     display: inline-block;
-    height: 120px;
-    width: 120px;
-    margin: 10px;
+    height: 7em;
+    width: 7em;
+    margin: 0.6em;
 }
 
 .circle {
@@ -103,8 +60,8 @@ li {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 110px;
-    width: 120px;
+    height: 7em;
+    width: 8em;
     border-radius: 30%;
     z-index: 2;
     opacity: 0.75;
@@ -116,6 +73,21 @@ li {
     z-index: 3;
     text-transform: uppercase;
     font-size: 1em;
+}
+
+.tweet {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0.5em;
+    border: 1px solid tomato;
+    height: auto;
+    display: none;
+    -webkit-webkit-border-: border-box;
+    -moz-webkit-border-: border-box;
+    -ms-webkit-border-: border-box;
+    -o-webkit-border-: border-box;
+    webkit-border-: border-box;
+
 }
 
 .glow {

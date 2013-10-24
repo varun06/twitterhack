@@ -23,6 +23,7 @@ $(function() {
     $('li').on('mouseenter', function () {
         var count = $(this).find('.circle').data('count');
         $(this).find('p').text(count);
+	doBounce($(this), 1, '30px', 500); //Bounce the div
     });
     $('li').on('mouseleave', function () {
         var keyword = $(this).find('.circle').data('keyword');
@@ -31,18 +32,26 @@ $(function() {
 
     // this section is going to handle the real time tweets
     socket.on('tweet', function(tweet){
-        console.log(tweet);
+	if(tweet.indexOf('#javascript') !== -1){
+	    console.log(tweet);
+	    $('div.tweet').text(tweet);
+	    $('ul li').on('click', function(){
+	       $('.tweet').show();
+	       $('.tweet').hide();
+	    });
 
-        $('li').on('mouseenter', function () {
-//            var count = $(this).find('.circle').data('count');
-            $('.tweet p').text(tweet);
-        });
-        $('li').on('mouseleave', function () {
-            var keyword = $(this).find('.circle').data('keyword');
-            $(this).find('p').text(keyword);
-        });
+	}
+
+	if(tweet.indexOf('#php') !== -1){
+//            console.log(tweet);
+	    $('div.tweet').text(tweet);
+
+	}
 
     });
+
+
+
 
     //This section is going to handle the hastags in tweet and display of number of tweets
     socket.on('data', function(data) {
@@ -69,5 +78,13 @@ $(function() {
         setTimeout(function () {
             circle.removeClass('glow');
         }, 500);
+    }
+
+
+    function doBounce(element, times, distance, speed) {
+	for(i = 0; i < times; i++) {
+	    element.animate({marginTop: '-='+distance},speed)
+		.animate({marginTop: '+='+distance},speed);
+	}
     }
 });
