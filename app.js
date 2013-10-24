@@ -17,7 +17,7 @@ var server = http.createServer(app);
 
 
 // Twitter symbols array
-var watchSymbols = ['#javascript', '#html', '#css', '#node', '#python', '#ruby', '#php', '#perl'];
+var watchSymbols = ['#javascript', '#html', '#css', '#node', '#python', '#ruby', '#php', '#perl', '#jquery'];
 
 //This structure will keep the total number of tweets received and a map of all the symbols and how many tweets received of that symbol
 var watchList = {

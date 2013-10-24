@@ -8,7 +8,8 @@ $(function() {
         '#python': { color: '#39be48' },
         '#ruby': { color: '#857158'},
         '#php': { color: '#4b5a63' },
-        '#perl': { color: '#f57b43'}
+	'#perl': { color: '#f57b43'},
+	'#jquery': { color: '#bada55'}
     };
 
     _.each($('.circle'), function (circle) {
@@ -32,21 +33,30 @@ $(function() {
 
     // this section is going to handle the real time tweets
     socket.on('tweet', function(tweet){
-	if(tweet.indexOf('#javascript') !== -1){
-	    console.log(tweet);
-	    $('div.tweet').text(tweet);
-	    $('ul li').on('click', function(){
-	       $('.tweet').show();
-	       $('.tweet').hide();
-	    });
+	$('div.tweet').text(tweet);
 
-	}
 
-	if(tweet.indexOf('#php') !== -1){
-//            console.log(tweet);
-	    $('div.tweet').text(tweet);
+//        if(tweet.indexOf('#javascript') !== -1){
+//
+//            $('ul li').on('click', function(){
+//
+//                if ($('.circle').data('keyword') === '#javascript'){
+//                    $('.tweet').show();
+//                    setTimeout(function(){
+//                        $('.tweet').hide();
+//                    }, 2000);
+//                }
+//
+//
+//            });
+//
+//        }
 
-	}
+//        if(tweet.indexOf('#php') !== -1){
+////            console.log(tweet);
+//            $('div.tweet').text(tweet);
+//
+//        }
 
     });
 

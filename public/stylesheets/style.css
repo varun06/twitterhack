@@ -79,9 +79,8 @@ li {
     max-width: 90%;
     margin: 0 auto;
     padding: 0.5em;
-    border: 1px solid tomato;
+    border: 1px solid #000000;
     height: auto;
-    display: none;
     -webkit-webkit-border-: border-box;
     -moz-webkit-border-: border-box;
     -ms-webkit-border-: border-box;
