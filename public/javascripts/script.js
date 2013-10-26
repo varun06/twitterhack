@@ -1,6 +1,7 @@
 $(function() {
     var socket = io.connect(window.location.hostname);
 
+    //an object to hold the keywords and color
     var keywords = {'#javascript': { color: '#49c59f' },
         '#html': { color: '#ec000e' },
         '#css': { color: '#f36a06' },
@@ -8,10 +9,11 @@ $(function() {
         '#python': { color: '#39be48' },
         '#ruby': { color: '#857158'},
         '#php': { color: '#4b5a63' },
-	'#perl': { color: '#f57b43'},
-	'#jquery': { color: '#bada55'}
+	    '#perl': { color: '#f57b43'},
+	    '#jquery': { color: '#bada55'}
     };
 
+    //give circles color and count/keyword
     _.each($('.circle'), function (circle) {
         var count = $(circle).data('count');
         var keyword = $(circle).data('keyword');
@@ -21,46 +23,24 @@ $(function() {
         });
     });
 
+    // On mouse enter
     $('li').on('mouseenter', function () {
         var count = $(this).find('.circle').data('count');
         $(this).find('p').text(count);
-	doBounce($(this), 1, '30px', 500); //Bounce the div
+	    doBounce($(this), 1, '30px', 500); //Bounce the div
     });
+
+    // on mouse leave
     $('li').on('mouseleave', function () {
         var keyword = $(this).find('.circle').data('keyword');
         $(this).find('p').text(keyword);
+        doBounce($(this), 1, '30px', 500); //Bounce the div
     });
 
     // this section is going to handle the real time tweets
     socket.on('tweet', function(tweet){
-	$('div.tweet').text(tweet);
-
-
-//        if(tweet.indexOf('#javascript') !== -1){
-//
-//            $('ul li').on('click', function(){
-//
-//                if ($('.circle').data('keyword') === '#javascript'){
-//                    $('.tweet').show();
-//                    setTimeout(function(){
-//                        $('.tweet').hide();
-//                    }, 2000);
-//                }
-//
-//
-//            });
-//
-//        }
-
-//        if(tweet.indexOf('#php') !== -1){
-////            console.log(tweet);
-//            $('div.tweet').text(tweet);
-//
-//        }
-
+	    $('div.tweet').text(tweet);
     });
-
-
 
 
     //This section is going to handle the hastags in tweet and display of number of tweets
@@ -81,6 +61,7 @@ $(function() {
         $('#last_update').text('Last Update: ' + new Date().toTimeString());
     });
 
+    //function to make circles flash on mouse event
     function flashCircle(circle) {
         circle.removeClass('glow');
         circle.addClass('glow');
@@ -90,7 +71,7 @@ $(function() {
         }, 500);
     }
 
-
+    //Function to make the circles bounce a bit
     function doBounce(element, times, distance, speed) {
 	for(i = 0; i < times; i++) {
 	    element.animate({marginTop: '-='+distance},speed)

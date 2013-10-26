@@ -1,5 +1,8 @@
+/*Import Roboto fonts from Google Fonts*/
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
 body {
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-align: center;
     letter-spacing: 2px;
     color: #000;
@@ -79,7 +82,6 @@ li {
     max-width: 90%;
     margin: 0 auto;
     padding: 0.5em;
-    border: 1px solid #000000;
     height: auto;
     -webkit-webkit-border-: border-box;
     -moz-webkit-border-: border-box;
