@@ -1,6 +1,10 @@
 /**
  * Module dependencies.
  */
+
+//new relic module
+//require('./newrelic');
+
 var express = require('express')
     , io = require('socket.io')
     , http = require('http')
@@ -9,7 +13,7 @@ var express = require('express')
     , _ = require('underscore')
     , path = require('path');
 
-//require('newrelic');
+
 
 //Create an express app
 var app = express();
