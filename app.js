@@ -9,6 +9,8 @@ var express = require('express')
     , _ = require('underscore')
     , path = require('path');
 
+require('newrelic');
+
 //Create an express app
 var app = express();
 
