@@ -3,15 +3,15 @@
  */
 
 //new relic module
-//require('./newrelic');
+require('newrelic');
 
-var express = require('express')
-    , io = require('socket.io')
-    , http = require('http')
-    , twitter = require('ntwitter')
-    , cronJob = require('cron').CronJob
-    , _ = require('underscore')
-    , path = require('path');
+var express = require('express'),
+    io = require('socket.io'),
+    http = require('http'),
+    twitter = require('ntwitter'),
+    cronJob = require('cron').CronJob,
+    _ = require('underscore'),
+    path = require('path');
 
 
 
