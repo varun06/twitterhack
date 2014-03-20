@@ -1,2 +1,2 @@
-My twitterhack for thinkful...
+Twitter Livestream API + Node.js
 ===========
